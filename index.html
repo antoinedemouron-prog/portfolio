@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Design Graphique - Antoine Demouron</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #1a2a3a;
+        --secondary-color: #34495e;
+        --accent-color: #ff6b6b;
+        --text-color: #333333;
+        --light-bg: #f5f7fa;
+        --white: #ffffff;
+      }
+
+      body {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: var(--white);
+        font-family: 'Open Sans', sans-serif;
+        color: var(--text-color);
+        line-height: 1.6;
+        box-sizing: border-box;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid #eee;
+        backdrop-filter: blur(5px);
+      }
+
+      .nav-logo {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 18px;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--secondary-color);
+        font-weight: 600;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-color);
+      }
+
+      .cover-section {
+        height: 80vh;
+        max-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: var(--light-bg);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cover-content {
+        z-index: 2;
+        padding: 40px;
+        border: 4px solid var(--primary-color);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      .cover-title {
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--primary-color);
+        line-height: 1.1;
+        margin-bottom: 15px;
+        letter-spacing: -2px;
+      }
+
+      .cover-subtitle {
+        font-size: 20px;
+        color: var(--accent-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+      }
+
+      .section {
+        padding: 60px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        margin-bottom: 30px;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .section-number {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 80px;
+        font-weight: 800;
+        color: rgba(26, 42, 58, 0.05);
+        position: absolute;
+        top: -40px;
+        left: -20px;
+        z-index: 0;
+      }
+
+      .section-title {
+        position: relative;
+        z-index: 1;
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .section-desc {
+        position: relative;
+        z-index: 1;
+        font-size: 14px;
+        color: #666;
+        max-width: 600px;
+        border-left: 3px solid var(--accent-color);
+        padding-left: 15px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        width: 100%;
+      }
+
+      .card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 280px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #f5f5f5;
+        position: relative;
+      }
+
+      .card-image::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+      }
+
+      .card-content {
+        padding: 20px;
+      }
+
+      .card-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+      }
+
+      .card-category {
+        font-size: 12px;
+        color: var(--accent-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 60px 40px;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .footer-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+      }
+
+      .contact-grid {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+
+      .contact-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+        font-size: 18px;
+      }
+
+      .contact-text {
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .contact-text a {
+        color: #ccc;
+        text-decoration: none;
+      }
+
+      .copyright {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .cover-title {
+          font-size: 40px;
+        }
+        .cover-subtitle {
+          font-size: 18px;
+        }
+        .section-number {
+          font-size: 60px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .nav-links {
+          display: none;
+        }
+        .section {
+          padding: 40px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="nav-logo">A. DEMOURON</a>
+      <div class="nav-links">
+        <a href="#miniatures">Miniatures</a>
+        <a href="#creation">Création Visuelle</a>
+        <a href="#montage">Montage Vidéo</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <header class="cover-section">
+      <div class="cover-content">
+        <h1 class="cover-title">BOOK<br>DESIGN GRAPHIQUE</h1>
+        <div class="cover-subtitle">Antoine Demouron</div>
+      </div>
+    </header>
+
+    <section id="miniatures" class="section">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Miniatures</h2>
+        <div class="section-desc">Miniatures de vidéo pour TikTok, Instagram, YouTube. Réalisées sur Photoshop.</div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/k6syy8m7/charly-st-valentin-3.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">La St-Valentin - Charly Nyobe</h3>
+            <div class="card-category">Miniature Vidéo / Photoshop</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/jK1T8nV/couverture-charly.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">Je Deviens Premier Ministre - Charly Nyobe</h3>
+            <div class="card-category">Miniature Vidéo / Photoshop</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/r2tKmCWn/charly-miniature-photo.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">Elle Branle Des Chiens - Charly Nyobe</h3>
+            <div class="card-category">Miniature Vidéo / Photoshop</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/qF7W9c3L/story-apollo-theatre-insta.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">Affiche Apollo Comedy - Charly Nyobe</h3>
+            <div class="card-category">Affiche Spectacle / Design / story instagram</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="creation" class="section" style="background-color: #f9f9f9">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Création Visuelle</h2>
+        <div class="section-desc">
+          Création de visuels pour des posts Instagram, TikTok et création de concepts. Réalisés sur Photoshop et
+          Illustrator.
+        </div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/3mdqLbYC/affiche-Tyson-2-0.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">Back In Stock - Harlem Vape</h3>
+            <div class="card-category">Post Instagram / Photoshop</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/0RnD4zMq/Pr-sentation-joueur.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">Carl Lemagie - FC Ardentis</h3>
+            <div class="card-category">Post Instagram / Photoshop</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/twCXMk3K/Logo-PNG-Team-Shishou-2.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">Logo Team Shishou</h3>
+            <div class="card-category">Logo Design / Illustrator</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://i.ibb.co/nsj5qDhs/nouveau-noopy-1.png');"></div>
+          <div class="card-content">
+            <h3 class="card-title">Lapins Illustration</h3>
+            <div class="card-category">Création Illustrator / Vector Art</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="montage" class="section">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Montage Vidéo</h2>
+        <div class="section-desc">Montages vidéo réalisés pour Instagram. Réalisés sur Final Cut Pro.</div>
+      </div>
+      <div class="grid">
+        <a href="https://www.instagram.com/reel/DE2rQ1oNL7-/" target="_blank" class="card" style="text-decoration: none; cursor: pointer;">
+          <div class="card-image" style="background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45); display: flex; align-items: center; justify-content: center;">
+            <i class="fab fa-instagram" style="font-size: 60px; color: white;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Mon Sosie</h3>
+            <div class="card-category">Montage Vidéo / Final Cut Pro</div>
+            <div style="margin-top: 10px; font-size: 12px; color: #666;">🔗 Cliquez pour voir sur Instagram</div>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/reel/DR2W4RFDZUd/" target="_blank" class="card" style="text-decoration: none; cursor: pointer;">
+          <div class="card-image" style="background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45); display: flex; align-items: center; justify-content: center;">
+            <i class="fab fa-instagram" style="font-size: 60px; color: white;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Elle Branle Des Chiens</h3>
+            <div class="card-category">Montage Vidéo / Final Cut Pro</div>
+            <div style="margin-top: 10px; font-size: 12px; color: #666;">🔗 Cliquez pour voir sur Instagram</div>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/reel/DJL41HiNMd4/" target="_blank" class="card" style="text-decoration: none; cursor: pointer;">
+          <div class="card-image" style="background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45); display: flex; align-items: center; justify-content: center;">
+            <i class="fab fa-instagram" style="font-size: 60px; color: white;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Promotion de Spectacle à La Réunion</h3>
+            <div class="card-category">Montage Vidéo / Final Cut Pro</div>
+            <div style="margin-top: 10px; font-size: 12px; color: #666;">🔗 Cliquez pour voir sur Instagram</div>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/reel/DKWqbwTNgjC/" target="_blank" class="card" style="text-decoration: none; cursor: pointer;">
+          <div class="card-image" style="background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45); display: flex; align-items: center; justify-content: center;">
+            <i class="fab fa-instagram" style="font-size: 60px; color: white;"></i>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Macron Se Fait Gifler</h3>
+            <div class="card-category">Montage Vidéo / Final Cut Pro</div>
+            <div style="margin-top: 10px; font-size: 12px; color: #666;">🔗 Cliquez pour voir sur Instagram</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="footer-content">
+        <h2 class="footer-title">Contactez-moi</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-text"><a href="mailto:antoinedemouron@yahoo.fr">antoinedemouron@yahoo.fr</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-text">+33 7 57 40 63 24</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-text">Paris, France</div>
+          </div>
+        </div>
+        <div class="copyright">© 2025 Antoine Demouron - Tous droits réservés.</div>
+      </div>
+    </footer>
+  </body>
+</html>
